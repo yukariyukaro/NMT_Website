@@ -1,5 +1,5 @@
-import { defineConfig } from 'vite'
-import path from 'path'
+import { defineConfig } from "vite";
+import path from "path";
 import tailwindcss from "@tailwindcss/vite";
 import Pages from "vite-plugin-pages";
 import react from "@vitejs/plugin-react-swc";
@@ -7,13 +7,11 @@ import react from "@vitejs/plugin-react-swc";
 export default defineConfig({
   plugins: [react(), tailwindcss(), Pages()],
   resolve: {
-	  // 路径别名（简化导入）
+    // 路径别名（简化导入）
     alias: {
-      '@': path.resolve(__dirname, './src')
+      "@": path.resolve(__dirname, "./src"),
     },
     // 自动补全扩展名
-    extensions: ['.js', '.ts', '.jsx', '.tsx']
+    extensions: [".js", ".ts", ".jsx", ".tsx"],
   },
-})
-
-
+});

@@ -11,20 +11,20 @@ export default function HomePage() {
     <GlobalLayout>
       <div className="space-y-8 animate-in fade-in duration-700">
         {/* Mission Statement Hero */}
-        <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-primary to-primary/80 text-primary-foreground p-8 md:p-12 shadow-2xl hover:shadow-3xl transition-shadow duration-300">
+        <div className="relative overflow-hidden rounded-2xl bg-muted text-foreground p-8 md:p-12 shadow-md hover:shadow-xl transition-shadow duration-300">
           <div className="relative z-10 max-w-2xl mx-auto text-center space-y-4">
-            <h1 className="text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl drop-shadow-md">
+            <h1 className="text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl drop-shadow-sm text-primary">
               随音而「衡」
             </h1>
-            <p className="text-lg sm:text-xl font-light leading-relaxed opacity-90">
+            <p className="text-lg sm:text-xl font-light leading-relaxed opacity-90 text-muted-foreground">
               以音乐的力量在心理和健康上支持患者
             </p>
-            <div className="flex items-center justify-center gap-2 text-sm font-medium mt-4">
-              <Heart className="h-5 w-5 text-red-200 animate-pulse" />
+            <div className="flex items-center justify-center gap-2 text-sm font-medium mt-4 text-muted-foreground">
+              <Heart className="h-5 w-5 text-red-500 animate-pulse" />
               <span>延续性照护 · 全方位支持</span>
             </div>
           </div>
-          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1511379938547-c1f69419868d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')] opacity-10 mix-blend-overlay bg-cover bg-center" />
+          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1511379938547-c1f69419868d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')] opacity-5 bg-cover bg-center" />
         </div>
 
         {/* Feature Cards Grid */}

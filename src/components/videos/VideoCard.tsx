@@ -34,8 +34,8 @@ export default function VideoCard({ video, layout = 'grid', onSelect, className 
           className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
         />
       ) : (
-        <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-slate-100 to-slate-200">
-          <PlayCircle className="h-10 w-10 text-slate-500" />
+        <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-secondary/50 to-secondary">
+          <PlayCircle className="h-10 w-10 text-muted-foreground" />
         </div>
       )}
 
