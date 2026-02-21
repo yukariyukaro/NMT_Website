@@ -1,6 +1,6 @@
 import { useNavigate, useLocation, Outlet } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { PlayCircle, Timer, Activity, Home, LogOut } from 'lucide-react';
+import { PlayCircle, Timer, Home, LogOut } from 'lucide-react';
 
 interface GlobalLayoutProps {
   children?: React.ReactNode;
@@ -14,7 +14,6 @@ export default function GlobalLayout({ children }: GlobalLayoutProps) {
     { name: '首页', path: '/', icon: Home },
     { name: '教学视频', path: '/videos', icon: PlayCircle },
     { name: '节拍器工具', path: '/metronome', icon: Timer },
-    { name: '我要训练', path: '/training', icon: Activity },
   ];
 
   const handleLogout = () => {

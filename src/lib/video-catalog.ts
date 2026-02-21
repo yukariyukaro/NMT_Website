@@ -13,7 +13,10 @@ export interface VideoMeta {
 }
 
 function buildPublicVideoSrc(fileName: string) {
-  return `/video/${encodeURIComponent(fileName)}`;
+  // Ensure we use the correct base path for GitHub Pages deployment
+  const baseUrl = import.meta.env.BASE_URL;
+  const prefix = baseUrl.endsWith('/') ? baseUrl : `${baseUrl}/`;
+  return `${prefix}video/${encodeURIComponent(fileName)}`;
 }
 
 const VIDEO_CATALOG: VideoMeta[] = [

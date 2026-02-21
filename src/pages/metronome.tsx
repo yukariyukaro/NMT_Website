@@ -2,14 +2,13 @@ import { useState, useEffect, useRef } from 'react';
 import GlobalLayout from '@/components/GlobalLayout';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
 import { Play, Pause, Minus, Plus, Volume2 } from 'lucide-react';
 
 export default function MetronomePage() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [bpm, setBpm] = useState(60);
   const [count, setCount] = useState(0);
-  const [beatsPerMeasure, setBeatsPerMeasure] = useState(4);
+  const [beatsPerMeasure] = useState(4);
   
   // Refs for audio scheduling to avoid closure staleness
   const audioContext = useRef<AudioContext | null>(null);

@@ -6,6 +6,8 @@ import { Button } from '@/components/ui/button';
 import GlobalLayout from '@/components/GlobalLayout';
 import VideoCard from '@/components/videos/VideoCard';
 import { getVideoById, listRelatedVideos } from '@/lib/video-catalog';
+import MetronomePanel from '@/components/training/MetronomePanel';
+import TrainingSession from '@/components/training/TrainingSession';
 
 export default function VideoPlayerPage() {
   const navigate = useNavigate();
@@ -167,17 +169,31 @@ export default function VideoPlayerPage() {
           ) : null}
         </div>
 
-        <div className="lg:col-span-1 space-y-4">
-          <h3 className="font-semibold text-lg mb-4">接下來播放</h3>
-
-          <div className="flex gap-2 overflow-x-auto pb-2 mb-2 no-scrollbar">
-            <Badge variant="default" className="whitespace-nowrap">全部</Badge>
+        <div className="lg:col-span-1 space-y-6">
+          {/* Training Tools Section */}
+          <div className="space-y-4">
+            <h3 className="font-semibold text-lg flex items-center gap-2">
+              <span className="h-1.5 w-1.5 rounded-full bg-primary block"></span>
+              训练助手
+            </h3>
+            
+            <TrainingSession videoId={video.id} videoTitle={video.title} />
+            
+            <MetronomePanel />
           </div>
 
-          <div className="grid grid-cols-2 lg:grid-cols-1 gap-3">
-            {relatedVideos.map((v) => (
-              <VideoCard key={v.id} video={v} layout="compact" onSelect={(videoId) => navigate(`/video-player/${videoId}`)} />
-            ))}
+          <div className="space-y-4 pt-4 border-t">
+            <h3 className="font-semibold text-lg">接下来播放</h3>
+
+            <div className="flex gap-2 overflow-x-auto pb-2 mb-2 no-scrollbar">
+              <Badge variant="default" className="whitespace-nowrap">全部</Badge>
+            </div>
+
+            <div className="grid grid-cols-2 lg:grid-cols-1 gap-3">
+              {relatedVideos.map((v) => (
+                <VideoCard key={v.id} video={v} layout="compact" onSelect={(videoId) => navigate(`/video-player/${videoId}`)} />
+              ))}
+            </div>
           </div>
         </div>
       </div>
