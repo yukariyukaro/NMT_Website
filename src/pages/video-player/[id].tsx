@@ -42,14 +42,6 @@ export default function VideoPlayerPage() {
     setPlaybackError(null);
   }, [video?.id]);
 
-  useEffect(() => {
-    const el = videoRef.current;
-    if (!el) return;
-    el.play().catch((err) => {
-      console.warn('[VideoPlayerPage] autoplay blocked or failed', { err });
-    });
-  }, [video?.id]);
-
   const handleVideoError = () => {
     const el = videoRef.current;
     const mediaError = el?.error;
@@ -129,6 +121,7 @@ export default function VideoPlayerPage() {
               onStalled={handleVideoEvent}
               onCanPlay={handleVideoEvent}
               onLoadStart={handleVideoEvent}
+              crossOrigin="anonymous"
             >
               您的瀏覽器不支援 HTML5 影片。
             </video>
