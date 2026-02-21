@@ -14,7 +14,7 @@ export default function HomePage() {
         <div className="relative overflow-hidden rounded-2xl bg-muted text-foreground p-8 md:p-12 shadow-md hover:shadow-xl transition-shadow duration-300">
           <div className="relative z-10 max-w-2xl mx-auto text-center space-y-4">
             <h1 className="text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl drop-shadow-sm text-primary">
-              随音而「衡」
+              隨音而「衡」
             </h1>
             <p className="text-lg sm:text-xl font-light leading-relaxed opacity-90 text-muted-foreground">
               音樂的力量伴你同行
@@ -33,10 +33,10 @@ export default function HomePage() {
             <CardHeader>
               <CardTitle className="flex items-center gap-2 group-hover:text-blue-600 transition-colors">
                 <PlayCircle className="h-6 w-6 text-blue-500" />
-                教学视频
+                教學影片
               </CardTitle>
               <CardDescription>
-                浏览示范影片，随时随地进行练习。
+                瀏覽示範影片，隨時隨地進行練習。
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -55,10 +55,10 @@ export default function HomePage() {
             <CardHeader>
               <CardTitle className="flex items-center gap-2 group-hover:text-green-600 transition-colors">
                 <Timer className="h-6 w-6 text-green-500" />
-                节拍器工具
+                節拍器工具
               </CardTitle>
               <CardDescription>
-                精准节奏控制，辅助您的每一次练习。
+                精準節奏控制，輔助您的每一次練習。
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -80,7 +80,7 @@ export default function HomePage() {
             <blockquote className="text-xl font-medium italic text-slate-700">
               你不是孤單的練習者，而是與世界同頻的勇者
             </blockquote>
-            <p className="mt-4 text-sm text-slate-500">- 随音而「衡」团队</p>
+            <p className="mt-4 text-sm text-slate-500">- 隨音而「衡」團隊</p>
           </CardContent>
         </Card>
       </div>

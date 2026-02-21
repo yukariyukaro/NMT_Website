@@ -30,7 +30,7 @@ export default function GlobalLayout({ children }: GlobalLayoutProps) {
             <div className="h-9 w-9 bg-primary rounded-full flex items-center justify-center text-primary-foreground font-serif text-lg shadow-md">
               衡
             </div>
-            <span className="hidden sm:inline-block tracking-tight text-primary">随音而「衡」</span>
+            <span className="hidden sm:inline-block tracking-tight text-primary">隨音而「衡」</span>
           </div>
 
           <nav className="flex items-center gap-1 sm:gap-4 overflow-x-auto no-scrollbar max-w-[60%] sm:max-w-none justify-center">
@@ -67,7 +67,7 @@ export default function GlobalLayout({ children }: GlobalLayoutProps) {
       <footer className="border-t py-6 md:py-0">
         <div className="container mx-auto flex flex-col items-center justify-between gap-4 md:h-24 md:flex-row px-4 md:px-6">
           <p className="text-center text-sm leading-loose text-muted-foreground md:text-left">
-            © 2026 随音而「衡」数位支援平台. All rights reserved.
+            © 2026 隨音而「衡」數位支援平台. All rights reserved.
           </p>
         </div>
       </footer>

@@ -54,13 +54,13 @@ export default function TrainingSession({ videoId }: TrainingSessionProps) {
       <CardHeader className="pb-2">
         <CardTitle className="text-lg flex items-center gap-2">
           <Clock className="h-5 w-5" />
-          训练记录
+          訓練記錄
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
         <div className="flex items-center justify-between bg-background p-3 rounded-lg border">
           <div>
-            <div className="text-sm text-muted-foreground">本次时长</div>
+            <div className="text-sm text-muted-foreground">本次時長</div>
             <div className={`text-2xl font-bold tabular-nums ${isTraining ? 'text-primary animate-pulse' : ''}`}>
               {formatTime(duration)}
             </div>
@@ -81,18 +81,18 @@ export default function TrainingSession({ videoId }: TrainingSessionProps) {
         >
           {isTraining ? (
             <>
-              <StopCircle className="mr-2 h-4 w-4" /> 结束训练
+              <StopCircle className="mr-2 h-4 w-4" /> 結束訓練
             </>
           ) : (
             <>
-              <PlayCircle className="mr-2 h-4 w-4" /> 开始跟练
+              <PlayCircle className="mr-2 h-4 w-4" /> 開始跟練
             </>
           )}
         </Button>
         
         {isTraining && (
           <p className="text-xs text-center text-muted-foreground animate-in fade-in">
-            正在记录训练时间...
+            正在記錄訓練時間...
           </p>
         )}
       </CardContent>

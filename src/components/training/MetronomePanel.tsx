@@ -121,7 +121,7 @@ export default function MetronomePanel({ className, compact = false }: Metronome
         <CardHeader className="pb-2">
           <CardTitle className="text-lg flex items-center gap-2">
             <Volume2 className="h-5 w-5" />
-            节拍器
+            節拍器
           </CardTitle>
         </CardHeader>
       )}
@@ -178,7 +178,7 @@ export default function MetronomePanel({ className, compact = false }: Metronome
               </>
             ) : (
               <>
-                <Play className="mr-2 h-4 w-4" /> 开始
+                <Play className="mr-2 h-4 w-4" /> 開始
               </>
             )}
           </Button>

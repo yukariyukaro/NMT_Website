@@ -126,8 +126,8 @@ export default function MetronomePage() {
     <GlobalLayout>
       <div className="max-w-md mx-auto space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
         <div className="text-center space-y-2">
-          <h1 className="text-3xl font-bold tracking-tight">节拍器</h1>
-          <p className="text-muted-foreground">保持节奏，提升练习效果</p>
+          <h1 className="text-3xl font-bold tracking-tight">節拍器</h1>
+          <p className="text-muted-foreground">保持節奏，提升練習效果</p>
         </div>
 
         <Card className="border-t-4 border-t-primary shadow-lg">
@@ -136,7 +136,7 @@ export default function MetronomePage() {
               {bpm}
             </CardTitle>
             <CardDescription className="uppercase tracking-widest font-semibold text-xs">
-              BPM (Beats Per Minute)
+              BPM (每分鐘節拍數)
             </CardDescription>
           </CardHeader>
           
@@ -196,7 +196,7 @@ export default function MetronomePage() {
             <div className="text-center pt-4">
                <div className="inline-flex items-center gap-2 text-sm text-muted-foreground bg-muted/50 px-3 py-1 rounded-full">
                 <Volume2 className="h-3 w-3" />
-                <span>建议佩戴耳机使用以获得最佳效果</span>
+                <span>建議佩戴耳機使用以獲得最佳效果</span>
                </div>
             </div>
           </CardContent>

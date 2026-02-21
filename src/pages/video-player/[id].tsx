@@ -186,7 +186,7 @@ export default function VideoPlayerPage() {
           <div className="space-y-4">
             <h3 className="font-semibold text-lg flex items-center gap-2">
               <span className="h-1.5 w-1.5 rounded-full bg-primary block"></span>
-              训练助手
+              訓練助手
             </h3>
             
             <TrainingSession videoId={video.id} videoTitle={video.title} />
@@ -195,7 +195,7 @@ export default function VideoPlayerPage() {
           </div>
 
           <div className="space-y-4 pt-4 border-t">
-            <h3 className="font-semibold text-lg">接下来播放</h3>
+            <h3 className="font-semibold text-lg">接下來播放</h3>
 
             <div className="flex gap-2 overflow-x-auto pb-2 mb-2 no-scrollbar">
               <Badge variant="default" className="whitespace-nowrap">全部</Badge>
