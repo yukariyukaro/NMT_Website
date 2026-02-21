@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState, type SyntheticEvent } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -58,6 +58,8 @@ export default function VideoPlayerPage() {
       src: el?.currentSrc,
       errorCode: mediaError?.code,
       errorMessage: (mediaError as unknown as { message?: string } | null)?.message,
+      networkState: el?.networkState,
+      readyState: el?.readyState,
     });
 
     const message =
@@ -75,6 +77,17 @@ export default function VideoPlayerPage() {
       duration: el?.duration,
       videoWidth: el?.videoWidth,
       videoHeight: el?.videoHeight,
+    });
+  };
+
+  const handleVideoEvent = (e: SyntheticEvent<HTMLVideoElement, Event>) => {
+    const el = e.currentTarget;
+    const buffered = el.buffered.length > 0 ? `${el.buffered.start(0)}-${el.buffered.end(0)}` : 'none';
+    console.info(`[VideoPlayerPage] event: ${e.type}`, {
+      src: el.currentSrc,
+      networkState: el.networkState,
+      readyState: el.readyState,
+      buffered,
     });
   };
 
@@ -102,14 +115,20 @@ export default function VideoPlayerPage() {
         <div className="lg:col-span-2 space-y-6">
           <div className="rounded-xl overflow-hidden bg-black aspect-video shadow-lg relative group">
             <video
+              key={video.id}
               ref={videoRef}
               controls
+              playsInline
               preload="metadata"
               poster={video.posterSrc}
               className="w-full h-full object-contain"
               src={video.src}
               onError={handleVideoError}
               onLoadedMetadata={handleLoadedMetadata}
+              onWaiting={handleVideoEvent}
+              onStalled={handleVideoEvent}
+              onCanPlay={handleVideoEvent}
+              onLoadStart={handleVideoEvent}
             >
               您的瀏覽器不支援 HTML5 影片。
             </video>

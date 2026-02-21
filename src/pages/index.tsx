@@ -46,7 +46,7 @@ export default function HomePage() {
             </CardContent>
             <CardFooter>
               <Button variant="ghost" className="w-full group-hover:bg-blue-50 group-hover:text-blue-600">
-                开始观看 <ArrowRight className="ml-2 h-4 w-4" />
+                開始觀看 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </CardFooter>
           </Card>
@@ -68,7 +68,7 @@ export default function HomePage() {
             </CardContent>
             <CardFooter>
               <Button variant="ghost" className="w-full group-hover:bg-green-50 group-hover:text-green-600">
-                开始练习 <ArrowRight className="ml-2 h-4 w-4" />
+                開始練習 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </CardFooter>
           </Card>
