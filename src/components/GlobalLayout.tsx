@@ -11,9 +11,9 @@ export default function GlobalLayout({ children }: GlobalLayoutProps) {
   const location = useLocation();
 
   const tabs = [
-    { name: '首页', path: '/', icon: Home },
-    { name: '教学视频', path: '/videos', icon: PlayCircle },
-    { name: '节拍器工具', path: '/metronome', icon: Timer },
+    { name: '首頁', path: '/', icon: Home },
+    { name: '教學影片', path: '/videos', icon: PlayCircle },
+    { name: '節拍器工具', path: '/metronome', icon: Timer },
   ];
 
   const handleLogout = () => {

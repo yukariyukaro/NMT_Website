@@ -32,7 +32,7 @@ export default function VideosPage() {
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
           <div>
             <h1 className="text-3xl font-bold tracking-tight">教學影片庫</h1>
-            <p className="text-muted-foreground">專業的 NMT 復健指導影片</p>
+            <p className="text-muted-foreground"> NMT 復健指導影片</p>
           </div>
           
           <div className="flex w-full md:w-auto items-center gap-2">
