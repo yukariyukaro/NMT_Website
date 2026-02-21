@@ -1,7 +1,7 @@
 import GlobalLayout from '@/components/GlobalLayout';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { PlayCircle, Timer, Activity, Heart, ArrowRight } from 'lucide-react';
+import { PlayCircle, Timer, Heart, ArrowRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 export default function HomePage() {
@@ -17,18 +17,18 @@ export default function HomePage() {
               随音而「衡」
             </h1>
             <p className="text-lg sm:text-xl font-light leading-relaxed opacity-90 text-muted-foreground">
-              以音乐的力量在心理和健康上支持患者
+              音樂的力量伴你同行
             </p>
             <div className="flex items-center justify-center gap-2 text-sm font-medium mt-4 text-muted-foreground">
               <Heart className="h-5 w-5 text-red-500 animate-pulse" />
-              <span>延续性照护 · 全方位支持</span>
+              <span>跟隨節拍 找回力量</span>
             </div>
           </div>
           <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1511379938547-c1f69419868d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')] opacity-5 bg-cover bg-center" />
         </div>
 
         {/* Feature Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
           <Card className="hover:shadow-lg transition-all duration-300 border-t-4 border-t-blue-500 cursor-pointer group" onClick={() => navigate('/videos')}>
             <CardHeader>
               <CardTitle className="flex items-center gap-2 group-hover:text-blue-600 transition-colors">
@@ -36,7 +36,7 @@ export default function HomePage() {
                 教学视频
               </CardTitle>
               <CardDescription>
-                浏览NMT治疗示范影片，随时随地进行康复练习。
+                浏览示范影片，随时随地进行练习。
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -72,35 +72,13 @@ export default function HomePage() {
               </Button>
             </CardFooter>
           </Card>
-
-          <Card className="hover:shadow-lg transition-all duration-300 border-t-4 border-t-purple-500 cursor-pointer group" onClick={() => navigate('/training')}>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2 group-hover:text-purple-600 transition-colors">
-                <Activity className="h-6 w-6 text-purple-500" />
-                我要训练
-              </CardTitle>
-              <CardDescription>
-                记录每日进度，追踪康复旅程。
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="aspect-video rounded-lg bg-slate-100 flex items-center justify-center text-slate-400 group-hover:scale-[1.02] transition-transform duration-300">
-                <Activity className="h-12 w-12 opacity-50" />
-              </div>
-            </CardContent>
-            <CardFooter>
-              <Button variant="ghost" className="w-full group-hover:bg-purple-50 group-hover:text-purple-600">
-                查看进度 <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-            </CardFooter>
-          </Card>
         </div>
 
         {/* Recent Activity / Motivational Quote */}
         <Card className="bg-gradient-to-br from-slate-50 to-white border-dashed">
           <CardContent className="p-8 text-center">
             <blockquote className="text-xl font-medium italic text-slate-700">
-              "每一个音符，都是通往康复的一步。"
+              你不是孤單的練習者，而是與世界同頻的勇者
             </blockquote>
             <p className="mt-4 text-sm text-slate-500">- 随音而「衡」团队</p>
           </CardContent>

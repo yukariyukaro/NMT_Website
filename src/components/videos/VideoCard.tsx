@@ -1,8 +1,8 @@
-import { PlayCircle } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import type { VideoMeta } from '@/lib/video-catalog';
+import AutoThumbnail from './AutoThumbnail';
 
 type VideoCardLayout = 'grid' | 'compact';
 
@@ -34,9 +34,11 @@ export default function VideoCard({ video, layout = 'grid', onSelect, className 
           className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
         />
       ) : (
-        <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-secondary/50 to-secondary">
-          <PlayCircle className="h-10 w-10 text-muted-foreground" />
-        </div>
+        <AutoThumbnail
+          src={video.src}
+          alt={video.title}
+          className="transition-transform duration-500 group-hover:scale-105"
+        />
       )}
 
       <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors" />

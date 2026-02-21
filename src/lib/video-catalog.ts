@@ -24,7 +24,7 @@ const VIDEO_CATALOG: VideoMeta[] = [
     id: 'mit-aeiou',
     title: 'MIT aeiou 咬字訓練',
     author: 'NMT 團隊',
-    category: '言語治療',
+    category: '言語訓練',
     src: buildPublicVideoSrc('MIT aeiou咬字訓練.mov'),
   },
   {
