@@ -16,16 +16,21 @@ export default function AutoThumbnail({ src, alt, className, time = 1 }: AutoThu
   useEffect(() => {
     let isActive = true;
     const video = document.createElement('video');
-    video.src = src;
+    const resolvedSrc = src.startsWith('http://') || src.startsWith('https://') ? src : encodeURI(src);
+    video.src = resolvedSrc;
     video.crossOrigin = 'anonymous';
-    video.currentTime = time;
     video.muted = true;
     video.preload = 'metadata'; // Load metadata only first
     
     // We need to wait for enough data to be available to seek
-    const handleLoadedData = () => {
-      // Once metadata is loaded, we can seek
-      video.currentTime = time;
+    const handleLoadedMetadata = () => {
+      const duration = Number.isFinite(video.duration) ? video.duration : 0;
+      const safeTime = duration > 0 ? Math.min(Math.max(time, 0), Math.max(0, duration - 0.1)) : Math.max(time, 0);
+      try {
+        video.currentTime = safeTime;
+      } catch {
+        setIsLoading(false);
+      }
     };
 
     const handleSeeked = () => {
@@ -55,7 +60,7 @@ export default function AutoThumbnail({ src, alt, className, time = 1 }: AutoThu
       console.warn('Video failed to load for thumbnail generation:', src);
     };
 
-    video.addEventListener('loadeddata', handleLoadedData);
+    video.addEventListener('loadedmetadata', handleLoadedMetadata);
     video.addEventListener('seeked', handleSeeked);
     video.addEventListener('error', handleError);
     
@@ -64,7 +69,7 @@ export default function AutoThumbnail({ src, alt, className, time = 1 }: AutoThu
 
     return () => {
       isActive = false;
-      video.removeEventListener('loadeddata', handleLoadedData);
+      video.removeEventListener('loadedmetadata', handleLoadedMetadata);
       video.removeEventListener('seeked', handleSeeked);
       video.removeEventListener('error', handleError);
       video.src = ''; // Cleanup
