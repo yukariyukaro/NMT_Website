@@ -1,6 +1,7 @@
 import { useNavigate, useLocation, Outlet } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { PlayCircle, Timer, Home, LogOut } from 'lucide-react';
+import { PlayCircle, Timer, Home } from 'lucide-react';
+import GlobalMusicBar from '@/components/music/GlobalMusicBar';
 
 interface GlobalLayoutProps {
   children?: React.ReactNode;
@@ -15,11 +16,6 @@ export default function GlobalLayout({ children }: GlobalLayoutProps) {
     { name: '教學影片', path: '/videos', icon: PlayCircle },
     { name: '節拍器工具', path: '/metronome', icon: Timer },
   ];
-
-  const handleLogout = () => {
-    // Clear session logic here if needed
-    navigate('/login');
-  };
 
   return (
     <div className="min-h-screen bg-background flex flex-col font-sans">
@@ -52,25 +48,25 @@ export default function GlobalLayout({ children }: GlobalLayoutProps) {
             })}
           </nav>
 
-          <Button variant="ghost" size="icon" onClick={handleLogout} className="ml-2 text-muted-foreground hover:text-destructive transition-colors">
-            <LogOut className="h-5 w-5" />
-          </Button>
         </div>
       </header>
 
       {/* Main Content */}
-      <main className="flex-1 container mx-auto py-6 px-4 md:px-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
+      <main className="flex-1 container mx-auto py-6 pb-28 px-4 md:px-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
         {children || <Outlet />}
       </main>
 
       {/* Footer */}
-      <footer className="border-t py-6 md:py-0">
+      <footer className="border-t py-6 md:py-0 pb-28">
         <div className="container mx-auto flex flex-col items-center justify-between gap-4 md:h-24 md:flex-row px-4 md:px-6">
           <p className="text-center text-sm leading-loose text-muted-foreground md:text-left">
             © 2026 隨音而「衡」數位支援平台. All rights reserved.
           </p>
         </div>
       </footer>
+
+      {/* Global Music Player Bar */}
+      <GlobalMusicBar />
     </div>
   );
 }

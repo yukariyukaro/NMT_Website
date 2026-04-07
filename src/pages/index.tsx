@@ -3,6 +3,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Button } from '@/components/ui/button';
 import { PlayCircle, Timer, Heart, ArrowRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import HomeMusicSection from '@/components/music/HomeMusicSection';
 
 export default function HomePage() {
   const navigate = useNavigate();
@@ -73,6 +74,9 @@ export default function HomePage() {
             </CardFooter>
           </Card>
         </div>
+
+        {/* Music Therapy Section */}
+        <HomeMusicSection />
 
         {/* Recent Activity / Motivational Quote */}
         <Card className="bg-gradient-to-br from-slate-50 to-white border-dashed">

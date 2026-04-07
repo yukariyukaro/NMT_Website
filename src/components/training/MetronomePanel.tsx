@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Play, Pause, Minus, Plus, Volume2 } from 'lucide-react';
+import { useMusicPlayer } from '@/components/music/useMusicPlayer';
 
 interface MetronomePanelProps {
   className?: string;
@@ -13,6 +14,14 @@ export default function MetronomePanel({ className, compact = false }: Metronome
   const [bpm, setBpm] = useState(60);
   const [count, setCount] = useState(0);
   const [beatsPerMeasure] = useState(4);
+
+  // 音樂 BPM 聯動
+  const { currentTrack, syncBpmEnabled } = useMusicPlayer();
+  useEffect(() => {
+    if (syncBpmEnabled && currentTrack) {
+      setBpm(currentTrack.bpm);
+    }
+  }, [syncBpmEnabled, currentTrack]);
   
   // Refs for audio scheduling
   const audioContext = useRef<AudioContext | null>(null);
@@ -130,7 +139,14 @@ export default function MetronomePanel({ className, compact = false }: Metronome
           {/* BPM Display & Visual */}
           <div className="flex items-center justify-between">
             <div className="flex flex-col">
-              <span className="text-3xl font-bold tabular-nums text-primary">{bpm}</span>
+              <div className="flex items-center gap-1.5">
+                <span className="text-3xl font-bold tabular-nums text-primary">{bpm}</span>
+                {syncBpmEnabled && currentTrack && (
+                  <span className="text-[10px] font-semibold px-1.5 py-0.5 rounded-full bg-purple-100 text-purple-700 leading-none">
+                    🎵 跟隨音樂
+                  </span>
+                )}
+              </div>
               <span className="text-xs text-muted-foreground font-medium">BPM</span>
             </div>
             

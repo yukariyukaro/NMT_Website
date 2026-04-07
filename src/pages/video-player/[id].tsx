@@ -1,13 +1,20 @@
-import { useEffect, useMemo, useRef, useState, type SyntheticEvent } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
-import { Card, CardContent } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
-import GlobalLayout from '@/components/GlobalLayout';
-import VideoCard from '@/components/videos/VideoCard';
-import { getVideoById, listRelatedVideos } from '@/lib/video-catalog';
-import MetronomePanel from '@/components/training/MetronomePanel';
-import TrainingSession from '@/components/training/TrainingSession';
+import {
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type SyntheticEvent,
+} from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import GlobalLayout from "@/components/GlobalLayout";
+import VideoCard from "@/components/videos/VideoCard";
+import { getVideoById, listRelatedVideos } from "@/lib/video-catalog";
+import MetronomePanel from "@/components/training/MetronomePanel";
+import MusicSelector from "@/components/music/MusicSelector";
+import TrainingSession from "@/components/training/TrainingSession";
 
 export default function VideoPlayerPage() {
   const navigate = useNavigate();
@@ -26,11 +33,11 @@ export default function VideoPlayerPage() {
   }, [video]);
 
   useEffect(() => {
-    console.info('[VideoPlayerPage] route', { id });
+    console.info("[VideoPlayerPage] route", { id });
   }, [id]);
 
   useEffect(() => {
-    console.info('[VideoPlayerPage] video resolved', {
+    console.info("[VideoPlayerPage] video resolved", {
       id,
       found: Boolean(video),
       src: video?.src,
@@ -45,25 +52,26 @@ export default function VideoPlayerPage() {
   const handleVideoError = () => {
     const el = videoRef.current;
     const mediaError = el?.error;
-    console.error('[VideoPlayerPage] media error', {
+    console.error("[VideoPlayerPage] media error", {
       id: video?.id,
       src: el?.currentSrc,
       errorCode: mediaError?.code,
-      errorMessage: (mediaError as unknown as { message?: string } | null)?.message,
+      errorMessage: (mediaError as unknown as { message?: string } | null)
+        ?.message,
       networkState: el?.networkState,
       readyState: el?.readyState,
     });
 
     const message =
       mediaError?.code === 4
-        ? '此影片格式可能不被瀏覽器支援，建議轉為 MP4（H.264 + AAC）後再試。'
-        : '影片載入失敗，請確認檔案存在且可被瀏覽器讀取。';
+        ? "此影片格式可能不被瀏覽器支援，建議轉為 MP4（H.264 + AAC）後再試。"
+        : "影片載入失敗，請確認檔案存在且可被瀏覽器讀取。";
     setPlaybackError(message);
   };
 
   const handleLoadedMetadata = () => {
     const el = videoRef.current;
-    console.info('[VideoPlayerPage] loadedmetadata', {
+    console.info("[VideoPlayerPage] loadedmetadata", {
       id: video?.id,
       currentSrc: el?.currentSrc,
       duration: el?.duration,
@@ -74,7 +82,10 @@ export default function VideoPlayerPage() {
 
   const handleVideoEvent = (e: SyntheticEvent<HTMLVideoElement, Event>) => {
     const el = e.currentTarget;
-    const buffered = el.buffered.length > 0 ? `${el.buffered.start(0)}-${el.buffered.end(0)}` : 'none';
+    const buffered =
+      el.buffered.length > 0
+        ? `${el.buffered.start(0)}-${el.buffered.end(0)}`
+        : "none";
     console.info(`[VideoPlayerPage] event: ${e.type}`, {
       src: el.currentSrc,
       networkState: el.networkState,
@@ -91,9 +102,11 @@ export default function VideoPlayerPage() {
             <CardContent className="p-6 space-y-4">
               <div className="space-y-1">
                 <h1 className="text-xl font-bold">找不到此影片</h1>
-                <p className="text-sm text-muted-foreground">此連結可能已失效，或影片已被移除。</p>
+                <p className="text-sm text-muted-foreground">
+                  此連結可能已失效，或影片已被移除。
+                </p>
               </div>
-              <Button onClick={() => navigate('/videos')}>返回影片庫</Button>
+              <Button onClick={() => navigate("/videos")}>返回影片庫</Button>
             </CardContent>
           </Card>
         </div>
@@ -132,9 +145,13 @@ export default function VideoPlayerPage() {
               <CardContent className="p-4 space-y-2">
                 <div className="space-y-1">
                   <h2 className="text-sm font-semibold">無法播放此影片</h2>
-                  <p className="text-sm text-muted-foreground">{playbackError}</p>
+                  <p className="text-sm text-muted-foreground">
+                    {playbackError}
+                  </p>
                 </div>
-                <div className="text-xs text-muted-foreground">來源：{video.src}</div>
+                <div className="text-xs text-muted-foreground">
+                  來源：{video.src}
+                </div>
               </CardContent>
             </Card>
           ) : null}
@@ -149,7 +166,9 @@ export default function VideoPlayerPage() {
                 </div>
                 <div>
                   <h3 className="font-semibold">{video.author}</h3>
-                  <p className="text-xs text-muted-foreground">{video.category}</p>
+                  <p className="text-xs text-muted-foreground">
+                    {video.category}
+                  </p>
                 </div>
               </div>
             </div>
@@ -164,13 +183,21 @@ export default function VideoPlayerPage() {
                   </div>
                 ) : null}
 
-                <p className="text-sm leading-relaxed whitespace-pre-wrap">{video.description}</p>
+                <p className="text-sm leading-relaxed whitespace-pre-wrap">
+                  {video.description}
+                </p>
 
                 {video.tags?.length ? (
                   <div className="pt-2 flex flex-wrap gap-2">
-                    <span className="text-sm font-medium mr-2 self-center">類型：</span>
+                    <span className="text-sm font-medium mr-2 self-center">
+                      類型：
+                    </span>
                     {video.tags.map((tag) => (
-                      <Badge key={tag} variant="secondary" className="cursor-pointer hover:bg-secondary/80">
+                      <Badge
+                        key={tag}
+                        variant="secondary"
+                        className="cursor-pointer hover:bg-secondary/80"
+                      >
                         {tag}
                       </Badge>
                     ))}
@@ -188,22 +215,28 @@ export default function VideoPlayerPage() {
               <span className="h-1.5 w-1.5 rounded-full bg-primary block"></span>
               訓練助手
             </h3>
-            
             <TrainingSession videoId={video.id} videoTitle={video.title} />
-            
             <MetronomePanel />
+            <MusicSelector recommendedCategory={video.category} />
           </div>
 
           <div className="space-y-4 pt-4 border-t">
             <h3 className="font-semibold text-lg">接下來播放</h3>
 
             <div className="flex gap-2 overflow-x-auto pb-2 mb-2 no-scrollbar">
-              <Badge variant="default" className="whitespace-nowrap">全部</Badge>
+              <Badge variant="default" className="whitespace-nowrap">
+                全部
+              </Badge>
             </div>
 
             <div className="grid grid-cols-2 lg:grid-cols-1 gap-3">
               {relatedVideos.map((v) => (
-                <VideoCard key={v.id} video={v} layout="compact" onSelect={(videoId) => navigate(`/video-player/${videoId}`)} />
+                <VideoCard
+                  key={v.id}
+                  video={v}
+                  layout="compact"
+                  onSelect={(videoId) => navigate(`/video-player/${videoId}`)}
+                />
               ))}
             </div>
           </div>
