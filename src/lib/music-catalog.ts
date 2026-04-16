@@ -106,7 +106,7 @@ const MUSIC_CATALOG: MusicTrack[] = [
   {
     id: "need-you-every-minute",
     title: "分分鐘需要你",
-    artist: "張國榮",
+    artist: "林子祥",
     bpm: 115,
     src: buildPublicMusicSrc("分分钟需要你.mp3"),
     difficulty: "advanced",
